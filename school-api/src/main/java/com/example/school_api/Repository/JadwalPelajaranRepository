@@ -1,0 +1,7 @@
+package com.example.school-api.repository;
+
+import com.example.school.entity.JadwalPelajaran;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JadwalPelajaranRepository extends JpaRepository<JadwalPelajaran, Long> {
+}

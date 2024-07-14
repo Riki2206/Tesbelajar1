@@ -1,0 +1,28 @@
+package com.example.school-api.entity;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+public class JadwalPelajaran {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String mataPelajaran;
+    private String hari;
+    private String jam;
+
+    @ManyToOne
+    @JoinColumn(name = "kelas_id")
+    private Kelas kelas;
+
+    @ManyToMany
+    @JoinTable(
+        name = "jadwal_siswa",
+        joinColumns = @JoinColumn(name = "jadwal_id"),
+        inverseJoinColumns = @JoinColumn(name = "siswa_id")
+    )
+    private List<Siswa> siswa;
+
+    // Getters and Setters
+}

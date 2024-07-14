@@ -1,0 +1,30 @@
+package com.example.school-api.controller;
+
+import com.example.schoolapi.entity.Jurusan;
+import com.example.schoolapi.service.JurusanService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/jurusan")
+public class JurusanController {
+    @Autowired
+    private JurusanService jurusanService;
+
+    @GetMapping
+    public List<Jurusan> getAllJurusan() {
+        return jurusanService.getAllJurusan();
+    }
+
+    @GetMapping("/{id}")
+    public Jurusan getJurusanById(@PathVariable Long id) {
+        return jurusanService.getJurusanById(id);
+    }
+
+    @PostMapping
+    public Jurusan saveJurusan(@RequestBody Jurusan jurusan) {
+        return jurusanService.saveJurusan(jurusan);
+    }
+}

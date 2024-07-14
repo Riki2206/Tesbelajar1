@@ -1,0 +1,30 @@
+package com.example.school-api.service;
+
+import com.example.schoolapi.entity.JadwalPelajaran;
+import com.example.schoolapi.repository.JadwalPelajaranRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class JadwalPelajaranService {
+    @Autowired
+    private JadwalPelajaranRepository jadwalPelajaranRepository;
+
+    public List<JadwalPelajaran> getAllJadwalPelajaran() {
+        return jadwalPelajaranRepository.findAll();
+    }
+
+    public JadwalPelajaran getJadwalPelajaranById(Long id) {
+        return jadwalPelajaranRepository.findById(id).orElse(null);
+    }
+
+    public JadwalPelajaran saveJadwalPelajaran(JadwalPelajaran jadwalPelajaran) {
+        return jadwalPelajaranRepository.save(jadwalPelajaran);
+    }
+
+    public void deleteJadwalPelajaran(Long id) {
+        jadwalPelajaranRepository.deleteById(id);
+    }
+}

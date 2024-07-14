@@ -1,0 +1,19 @@
+package com.example.school-api.entity;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+public class Siswa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nama;
+    private String nisn;
+    private String alamat;
+
+    @ManyToMany(mappedBy = "siswa")
+    private List<JadwalPelajaran> jadwalPelajaran;
+
+    // Getters and Setters
+}

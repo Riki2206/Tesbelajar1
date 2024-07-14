@@ -1,0 +1,35 @@
+package com.example.school-api.controller;
+
+import com.example.schoolapi.entity.Siswa;
+import com.example.schoolapi.service.SiswaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/siswa")
+public class SiswaController {
+    @Autowired
+    private SiswaService siswaService;
+
+    @GetMapping
+    public List<Siswa> getAllSiswa() {
+        return siswaService.getAllSiswa();
+    }
+
+    @GetMapping("/{id}")
+    public Siswa getSiswaById(@PathVariable Long id) {
+        return siswaService.getSiswaById(id);
+    }
+
+    @PostMapping
+    public Siswa saveSiswa(@RequestBody Siswa siswa) {
+        return siswaService.saveSiswa(siswa);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteSiswa(@PathVariable Long id) {
+        siswaService.deleteSiswa(id);
+    }
+}

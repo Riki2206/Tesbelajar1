@@ -1,0 +1,35 @@
+package com.example.school-api.controller;
+
+import com.example.schoolapi.entity.Kelas;
+import com.example.schoolapi.service.KelasService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/kelas")
+public class KelasController {
+    @Autowired
+    private KelasService kelasService;
+
+    @GetMapping
+    public List<Kelas> getAllKelas() {
+        return kelasService.getAllKelas();
+    }
+
+    @GetMapping("/{id}")
+    public Kelas getKelasById(@PathVariable Long id) {
+        return kelasService.getKelasById(id);
+    }
+
+    @PostMapping
+    public Kelas saveKelas(@RequestBody Kelas kelas) {
+        return kelasService.saveKelas(kelas);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteKelas(@PathVariable Long id) {
+        kelasService.deleteKelas(id);
+    }
+}

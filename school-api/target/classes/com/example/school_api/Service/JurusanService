@@ -1,0 +1,30 @@
+package com.example.school-api.service;
+
+import com.example.school.entity.Jurusan;
+import com.example.school.repository.JurusanRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class JurusanService {
+    @Autowired
+    private JurusanRepository jurusanRepository;
+
+    public List<Jurusan> getAllJurusan() {
+        return jurusanRepository.findAll();
+    }
+
+    public Jurusan getJurusanById(Long id) {
+        return jurusanRepository.findById(id).orElse(null);
+    }
+
+    public Jurusan saveJurusan(Jurusan jurusan) {
+        return jurusanRepository.save(jurusan);
+    }
+
+    public void deleteJurusan(Long id) {
+        jurusanRepository.deleteById(id);
+    }
+}
